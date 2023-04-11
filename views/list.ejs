@@ -1,0 +1,65 @@
+<html>
+<head> 
+<title> To-Do-List App </title>
+ <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
+ <link rel="icon" href="icon.png">
+ <link rel="stylesheet" href="css\style.css">
+</head>
+<style>
+  ul li {
+  /* background: #cce5ff; */
+  color:white;
+  margin: 5px;
+  /* height: 30px; */
+}
+</style>
+
+<body>
+    <center><h1 class="box" style="color: #18978F"><%= Date%> </h1></center>
+
+    <!-- <div class="box" id="heading" >
+        <h1>To-Do-Lists at:</h1>
+        <ul>
+            <form class="item"  action ="/" method="POST">
+                <input id="Name" maxlength="30" type="text" name="" placeholder="Write List Name"> 
+                <button id="button1"> + </button>
+            </form>
+            <li><h1><a href="/Work"style="text-decoration:none ; color:white;display:flex">Work</a></h1></li>
+            <li><h1><a href="/"style="text-decoration:none ; color:white;display:flex">Home</a></h1> </li>
+        </ul>
+       
+      
+
+
+    </div> -->
+
+    <div class="box" id="heading">
+        <!-- <h1 >Today is <%= Day %> </h1> -->
+        <h1 ><%= Day %>&nbsp; List </h1>
+
+    </div>
+    <div class="box">
+      <% task.forEach(function(item){ %>
+        <form action="/removetask" method="post">
+        <div class="item">
+            <input type="checkbox" name="checkbox[]" value="<%=item._id%>" onChange="this.form.submit()">
+            <p> <%= item.name%> </p>
+        </div>
+        <input type="hidden" name="listName" value="<%=Day%>">
+    </form>
+      <% })%>
+        
+   
+    <form class="item" action ="/" method="POST">
+        <input  maxlength="30" type="text" name="newtask" placeholder="Write a task to add in To-Do list"> 
+        <button type="submit" name="list" value="<%=Day%>"> + </button>
+    </form>
+  
+        </div>
+    </div>
+   
+    
+
+
+</body>
+</html>
